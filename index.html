@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Interactiva - Ingeniería en Sistemas UTN (Plan 2023)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Malla Interactiva - Ingeniería en Sistemas UTN (Plan 2023)</h1>
+
+  <div class="anio" id="anio1">
+    <h2>Primer Año</h2>
+    <div class="grid">
+      <button class="materia" onclick="toggle(this)" data-materia="algoritmos">Algoritmos y Estructuras de Datos</button>
+      <button class="materia" onclick="toggle(this)" data-materia="arquitectura">Arquitectura de Computadoras</button>
+      <button class="materia" onclick="toggle(this)" data-materia="matematica1">Matemática Discreta</button>
+      <button class="materia" onclick="toggle(this)" data-materia="sistemas">Sistemas y Organizaciones</button>
+      <button class="materia" onclick="toggle(this)" data-materia="algemat">Álgebra y Geometría Analítica</button>
+      <button class="materia" onclick="toggle(this)" data-materia="analisis1">Análisis Matemático I</button>
+      <button class="materia" onclick="toggle(this)" data-materia="ingles1">Inglés I</button>
+    </div>
+  </div>
+
+  <div class="anio" id="anio2">
+    <h2>Segundo Año</h2>
+    <div class="grid">
+      <button class="materia" disabled data-correlativas="algoritmos,analisis1" data-materia="syo">Sistemas de Representación y Operaciones</button>
+      <button class="materia" disabled data-correlativas="arquitectura,algoritmos" data-materia="sistemasOperativos">Sistemas Operativos</button>
+      <button class="materia" disabled data-correlativas="algoritmos,analisis1" data-materia="paradigmas">Paradigmas de Programación</button>
+      <button class="materia" disabled data-correlativas="analisis1,algebra" data-materia="analisis2">Análisis Matemático II</button>
+      <button class="materia" disabled data-correlativas="matematica1" data-materia="logica">Lógica y Estructuras Algebraicas</button>
+      <button class="materia" disabled data-correlativas="ingles1" data-materia="ingles2">Inglés II</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+"""
