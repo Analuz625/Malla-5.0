@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1b0033, #000011, #000033);
+  background-attachment: fixed;
+  background-size: cover;
+  color: #ffffff;
+  text-align: center;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  border-radius: 15px;
+  backdrop-filter: blur(4px);
+}
+
+h2 {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.8rem;
+  border-radius: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.materia {
+  padding: 1rem;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 2px solid #ffffff33;
+}
+
+.materia:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.materia.tachada {
+  text-decoration: line-through;
+  background-color: rgba(0, 255, 128, 0.3);
+  border-color: #00ff80;
+}
+
+.materia:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+"""
+
+js_code = """
+function toggle(button) {
+  button.classList.toggle("tachada");
+  updateMaterias();
+}
+
+function updateMaterias() {
+  const materiasAprobadas = Array.from(document.querySelectorAll(".materia.tachada"))
+    .map(btn => btn.dataset.materia);
+
+  document.querySelectorAll(".materia[disabled]").forEach(btn => {
+    const necesarias = btn.dataset.correlativas?.split(",") || [];
+    const puedeCursar = necesarias.every(m => materiasAprobadas.includes(m));
+    if (puedeCursar) {
+      btn.disabled = false;
+    }
+  });
+}
