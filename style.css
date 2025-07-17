@@ -62,23 +62,3 @@ h2 {
   opacity: 0.4;
   cursor: not-allowed;
 }
-"""
-
-js_code = """
-function toggle(button) {
-  button.classList.toggle("tachada");
-  updateMaterias();
-}
-
-function updateMaterias() {
-  const materiasAprobadas = Array.from(document.querySelectorAll(".materia.tachada"))
-    .map(btn => btn.dataset.materia);
-
-  document.querySelectorAll(".materia[disabled]").forEach(btn => {
-    const necesarias = btn.dataset.correlativas?.split(",") || [];
-    const puedeCursar = necesarias.every(m => materiasAprobadas.includes(m));
-    if (puedeCursar) {
-      btn.disabled = false;
-    }
-  });
-}
